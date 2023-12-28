@@ -5,6 +5,7 @@ from src.item import Item
 
 @pytest.fixture()
 def get_item():
+    Item.all.clear()
     Item.pay_rate = 0.7
     return [Item("Смартфон", 10000, 20), Item("Бритва", "", "1")]
 
@@ -25,4 +26,10 @@ def test__init__(get_item):
     assert get_item[1].name == "Бритва"
     assert get_item[0].price == 10000
     assert get_item[0].quantity == 20
-    assert len(get_item[0].all) == 6
+    assert len(get_item[0].all) == 2
+
+
+def test_string_to_number():
+    assert Item.string_to_number('5') == 5
+    assert Item.string_to_number('') is ValueError
+    assert Item.string_to_number('5.5') == 5
