@@ -33,3 +33,13 @@ def test_string_to_number():
     assert Item.string_to_number('5') == 5
     assert Item.string_to_number('') is ValueError
     assert Item.string_to_number('5.5') == 5
+
+
+def test__repr__(get_item):
+    assert get_item[0].__repr__() == "Item('Смартфон', 10000, 20)"
+    assert get_item[1].__repr__() == "Item('Бритва', , 1)"
+
+
+def test__str__(get_item):
+    assert get_item[0].__str__() == "Смартфон"
+    assert get_item[1].__str__() == "Бритва"
