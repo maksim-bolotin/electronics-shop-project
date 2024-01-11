@@ -22,11 +22,11 @@ class Item:
         self.all.append(self)
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self.__name
 
     @name.setter
-    def name(self, name):
+    def name(self, name) -> str:
         if len(name) <= 10:
             self.__name = name
         else:
@@ -60,7 +60,7 @@ class Item:
                 cls(name, price, quantity)
 
     @staticmethod
-    def string_to_number(some_line):
+    def string_to_number(some_line) -> int:
         """
         Метод, возвращающий число из числа-строки.
         """
@@ -69,9 +69,17 @@ class Item:
         except:
             return ValueError
 
-    def __repr__(self):
+    def __add__(self, other) -> int:
+        """Метод реализующий сложение экземпляров класса.
+        Осуществляет проверку принадлежности экземпляра к классу Item.
+        """
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        else:
+            raise TypeError("Нельзя сложить экземпляр класса Item(или его наследников) с экземпляром иного класса.")
+
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
 
-
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name}"
