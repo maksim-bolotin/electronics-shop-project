@@ -7,13 +7,13 @@ from src.item import Item
 def get_item():
     Item.all.clear()
     Item.pay_rate = 0.7
-    return [Item("Смартфон", 10000, 20), Item("Бритва", "", "1")]
+    return [Item("Смартфон", 10000, 20), Item("Бритва", "", 1)]
 
 
 def test_calculate_total_price(get_item):
     assert get_item[0].calculate_total_price() == 200000
     with pytest.raises(Exception):
-        get_item[1].calculate_total_price()
+        assert get_item[1].calculate_total_price() is Exception
 
 
 def test_apply_discount(get_item):
@@ -43,3 +43,7 @@ def test__repr__(get_item):
 def test__str__(get_item):
     assert get_item[0].__str__() == "Смартфон"
     assert get_item[1].__str__() == "Бритва"
+
+
+def test__add__(get_item):
+    assert get_item[0] + get_item[1] == 21
