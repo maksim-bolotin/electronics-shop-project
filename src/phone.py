@@ -20,13 +20,14 @@ class Phone(Item):
         return self.sim
 
     @number_of_sim.setter
-    def number_of_sim(self, value) -> int:
+    def number_of_sim(self, value) -> None:
         """
         Сеттер для проверки количества физических SIM-карт.
         """
         if value > 0:
             self.sim = value
-        raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля.")
+        else:
+            raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля.")
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity}, {self.number_of_sim})"

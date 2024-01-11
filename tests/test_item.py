@@ -1,4 +1,4 @@
-"""Здесь надо написать тесты с использованием pytest для модуля item."""
+"""Здесь надо написать тесты с использованием pytest для модуля Phone."""
 import pytest
 from src.item import Item
 
@@ -36,13 +36,13 @@ def test_string_to_number():
 
 
 def test__repr__(get_item):
-    assert get_item[0].__repr__() == "Item('Смартфон', 10000, 20)"
-    assert get_item[1].__repr__() == "Item('Бритва', , 1)"
+    assert repr(get_item[0]) == "Item('Смартфон', 10000, 20)"
+    assert repr(get_item[1]) == "Item('Бритва', , 1)"
 
 
 def test__str__(get_item):
-    assert get_item[0].__str__() == "Смартфон"
-    assert get_item[1].__str__() == "Бритва"
+    assert str(get_item[0]) == "Смартфон"
+    assert str(get_item[1]) == "Бритва"
 
 
 def test__add__(get_item):
