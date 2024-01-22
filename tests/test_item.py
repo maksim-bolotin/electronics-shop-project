@@ -31,7 +31,7 @@ def test__init__(get_item):
 
 def test_string_to_number():
     assert Item.string_to_number('5') == 5
-    assert Item.string_to_number('') is ValueError
+    assert Item.string_to_number('') is None
     assert Item.string_to_number('5.5') == 5
 
 

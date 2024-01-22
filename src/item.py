@@ -78,8 +78,8 @@ class Item:
         """
         try:
             return int(float(some_line))
-        except:
-            return ValueError
+        except (ValueError, TypeError):
+            return None
 
     def __add__(self, other) -> int:
         """Метод реализующий сложение экземпляров класса.
